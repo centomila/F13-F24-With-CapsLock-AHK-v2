@@ -19,7 +19,7 @@ AppVersion := "1.0.0"
 ; Define the help and about texts.
 HelpText := "Enable the Caps Lock key to use F13-F24 keys.`n`nDisable the Caps Lock key to use the normal F1-F12 keys."
 AboutText := "This simple script is made with Love  by Centomila.`n`n" .
-            "If this has been useful to you, consider listening or sharing my music. You can find links to all my discography on `n`n" .
+            "If this has been useful to you, consider listening or sharing my music. You can find links to all my discography on `n`n`n" .
             "https://centomila.com"
 
 ; Define the icon file paths.
