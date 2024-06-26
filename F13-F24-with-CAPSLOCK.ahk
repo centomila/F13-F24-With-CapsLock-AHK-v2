@@ -12,27 +12,39 @@ AboutText := "This simple script is made with Love by Centomila.`n`n" .
             "If this is has been useful to you, consider listening or share my music. You can find links all my discography on `n`n" .
             "https://centomila.com"
 
-if (A_IsCompiled) {
-    ; Compiled version, use icon from the .exe file
-    TraySetIcon(A_ScriptName)
-} else {
-    ; Source version, use the custom icon
-    TraySetIcon("F13.ico")
+; This is necessary for the compiled version. The 0 at the end avoid overwriting the existing icon.
+FileInstall A_ScriptDir . "\F13Icons\F13.ico", A_ScriptDir . "\F13Icons\F13.ico", 0
+FileInstall A_ScriptDir .  "\F13Icons\F13-ON.ico", A_ScriptDir .  "\F13Icons\F13-ON.ico", 0
+
+
+ChangeIcon() {
+    if GetKeyState("CapsLock", "T") {
+    TraySetIcon(A_ScriptDir . "\F13Icons\F13-ON.ico")
+    ToolTip "`nF13 | F24`n ", 9999,9999 ; Positioned at 9999,9999 so it is always on the lower right corner
+    }
+    else {
+    TraySetIcon(A_ScriptDir . "\F13Icons\F13.ico")
+    ToolTip "`nF1 | F12`n ", 9999,9999
+    }
+    SetTimer () => ToolTip(), -1500
 }
+
+; Execute ChangeIcon on startup
+ChangeIcon()
 
 
 Tray := A_TrayMenu
 Tray.Delete()
 
-Tray.Add(AppName, NoAction)  ; Creates a separator line.
+Tray.Add(AppName, HelpMsg)  ; Launch the function to display the Help box.
 Tray.Add() ; Creates a separator line.
-Tray.Add("About", AboutMsg)  ; Creates a new menu item.
-; Add pause script tray
-Tray.Add("Exit", ExitApp)
-Tray.Default := AppName
+Tray.Add("About", AboutMsg)  ; Launch the function to display the About box.
+Tray.Add("Exit", ExitApp) ; Launch the function to exit the app.
+Tray.Default := AppName ; Set the default menu item with the same name as the first added menu item (AppName).
 
-NoAction(*) {
-    ; Do nothing.
+
+HelpMsg(A_ThisMenuItem, A_ThisMenuItemPos, Tray) {
+    MsgBox(HelpText, "Help " . AppName)
 }
 
 AboutMsg(A_ThisMenuItem, A_ThisMenuItemPos, Tray) {
@@ -45,6 +57,8 @@ ExitApp(*)
 }
 
 ; Main app
+
+~CapsLock:: ChangeIcon
 
 #HotIf GetKeyState("CapsLock", "T")
     F1::F13
@@ -59,9 +73,12 @@ ExitApp(*)
     F10::F22
     F11::F23
     F12::F24
+    
+    ; Add here additioal remapping to works with CapsLock enabled
+
 #HotIf
 
-; Autoreload on saving trick
+; Autoreload on saving when using VSCode
 #HotIf WinActive("Visual Studio Code")
 ~^s:: Reload
 #HotIf
