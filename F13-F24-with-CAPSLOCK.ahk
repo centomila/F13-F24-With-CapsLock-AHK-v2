@@ -1,58 +1,81 @@
-﻿; #Warn  ; Enable warnings to assist with detecting common errors.
-SendMode("Input")  ; Recommended for new scripts due to its superior speed and reliability.
-SetWorkingDir(A_ScriptDir)  ; Ensures a consistent starting directory.
-Persistent  ; Keep the script running until the user exits it.
+﻿; This script enables the Caps Lock key to use F13-F24 keys.
+; Disable the Caps Lock key to use the normal F1-F12 keys.
+
+; Recommended for new scripts due to its superior speed and reliability.
+SendMode("Input")
+
+; Ensures a consistent starting directory.
+SetWorkingDir(A_ScriptDir)
+
+; Keep the script running until the user exits it.
+Persistent
+
 #SingleInstance force
 
+; Define the application name and version.
 AppName := "Centomila's F13-F24 with CapsLock"
 AppVersion := "1.0.0"
 
+; Define the help and about texts.
 HelpText := "Enable the Caps Lock key to use F13-F24 keys.`n`nDisable the Caps Lock key to use the normal F1-F12 keys."
-AboutText := "This simple script is made with Love by Centomila.`n`n" .
-            "If this is has been useful to you, consider listening or share my music. You can find links all my discography on `n`n" .
+AboutText := "This simple script is made with Love  by Centomila.`n`n" .
+            "If this has been useful to you, consider listening or sharing my music. You can find links to all my discography on `n`n" .
             "https://centomila.com"
 
-; This is necessary for the compiled version. The 0 at the end avoid overwriting the existing icon.
-FileInstall A_ScriptDir . "\F13Icons\F13.ico", A_ScriptDir . "\F13Icons\F13.ico", 0
-FileInstall A_ScriptDir .  "\F13Icons\F13-ON.ico", A_ScriptDir .  "\F13Icons\F13-ON.ico", 0
+; Define the icon file paths.
+IconOff := A_ScriptDir . "\F13Icons\F13-OFF.ico"
+IconOn := A_ScriptDir . "\F13Icons\F13-ON.ico"
 
+; Install the icon files.
+FileInstall IconOff, IconOff, 0
+FileInstall IconOn, IconOn, 0
 
+; Function to change the tray icon based on the Caps Lock state.
 ChangeIcon() {
     if GetKeyState("CapsLock", "T") {
-    TraySetIcon(A_ScriptDir . "\F13Icons\F13-ON.ico")
-    ToolTip "`nF13 | F24`n ", 9999,9999 ; Positioned at 9999,9999 so it is always on the lower right corner
-    }
-    else {
-    TraySetIcon(A_ScriptDir . "\F13Icons\F13.ico")
-    ToolTip "`nF1 | F12`n ", 9999,9999
+        TraySetIcon(IconOn)
+        ToolTip "`nF13 | F24`n ", 9999,9999 ; Positioned at 9999,9999 so it is always on the lower right corner
+    } else {
+        TraySetIcon(IconOff)
+        ToolTip "`nF1 | F12`n ", 9999,9999
     }
     SetTimer () => ToolTip(), -1500
 }
 
-; Execute ChangeIcon on startup
+; Execute ChangeIcon on startup.
 ChangeIcon()
 
-
+; Create the tray menu.
 Tray := A_TrayMenu
 Tray.Delete()
 
-Tray.Add(AppName, HelpMsg)  ; Launch the function to display the Help box.
-Tray.Add() ; Creates a separator line.
-Tray.Add("About", AboutMsg)  ; Launch the function to display the About box.
-Tray.Add("Exit", ExitApp) ; Launch the function to exit the app.
-Tray.Default := AppName ; Set the default menu item with the same name as the first added menu item (AppName).
+; Add the Help menu item.
+Tray.Add(AppName, HelpMsg)
 
+; Add a separator line.
+Tray.Add()
 
+; Add the About menu item.
+Tray.Add("About", AboutMsg)
+
+; Add the Exit menu item.
+Tray.Add("Exit", ExitApp)
+
+; Set the default menu item.
+Tray.Default := AppName
+
+; Function to display the Help box.
 HelpMsg(A_ThisMenuItem, A_ThisMenuItemPos, Tray) {
-    MsgBox(HelpText, "Help " . AppName)
+    MsgBox(HelpText, "Help " . AppName . " " . AppVersion)
 }
 
+; Function to display the About box.
 AboutMsg(A_ThisMenuItem, A_ThisMenuItemPos, Tray) {
     MsgBox(AboutText, "About " . AppName)
 }
 
-ExitApp(*)
-{
+; Function to exit the application.
+ExitApp(*) {
     ExitApp()
 }
 
@@ -73,9 +96,6 @@ ExitApp(*)
     F10::F22
     F11::F23
     F12::F24
-    
-    ; Add here additioal remapping to works with CapsLock enabled
-
 #HotIf
 
 ; Autoreload on saving when using VSCode
