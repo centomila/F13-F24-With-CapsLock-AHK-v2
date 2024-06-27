@@ -18,7 +18,7 @@
 
 ## Description
 
-Centomila's F13-F24 with CapsLock is a simple but useful AutoHotkey v2 (AHK2) script that enhances the functionality of the `Caps Lock` key. When `Caps Lock` is **enabled**, the `F1`-`F12` keys are remapped to `F13`-`F24`. The status is displayed in the systray icon and for a short time on a tooltip in the bottom right corner.
+**F13-F24 with CapsLock** is a simple but useful AutoHotkey v2 (AHK2) script that enhances the functionality of the `Caps Lock` key. When `Caps Lock` is **enabled**, the `F1`-`F12` keys are remapped to `F13`-`F24`. The status is displayed in the systray icon and for a short time on a tooltip in the bottom right corner.
 
 While the remapping is really simple and can be done in less than 20 lines of code (see below), I wanted to create a script that covers many AutoHotkey functionalities that are often asked about on the official AutoHotkey Forum, Reddit, and Stackoverflow communities. I tried to comment the script as much as possible without being too verbose.
 
