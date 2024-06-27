@@ -1,8 +1,9 @@
 # Centomila's F13-F24 with CapsLock
 
-Centomila's F13-F24 with CapsLock is a simple but useful AutoHotkey v2 (AHK2) script that enhances the functionality of the Caps Lock key. When Caps Lock is enabled, the `F1`-`F12` keys are remapped to `F13`-`F24`.
+## Description
+Centomila's F13-F24 with CapsLock is a simple but useful AutoHotkey v2 (AHK2) script that enhances the functionality of the `Caps Lock` key. When `Caps Lock` is **enabled**, the `F1`-`F12` keys are remapped to `F13`-`F24`. The status are displayed in the systray icon and for a short time on a tooltip in the right bottom corner.
 
-While this can be done in less of 20 lines of code, I wanted to created a script that cover many Autohotkey functionality that often are asked on the official Autohotkey Forum, Reddit and Stackoverflow communities. I tried to comment the script as much as possible without being too verbose.
+While the remapping is really simple and can be done in less of 20 lines of code (see below), I wanted to created a script that covers many Autohotkey functionality that often are asked on the official Autohotkey Forum, Reddit and Stackoverflow communities. I tried to comment the script as much as possible without being too verbose.
 
 This script demonstrates examples of
 - Hotkeys with HotIf
@@ -18,8 +19,6 @@ This script demonstrates examples of
 - OS Language detection
 
 ## Description
-
-This simple application remaps the `F1` to `F12` keys to `F13` to `F24` using the Caps Lock key, providing you with an additional 12 function keys.
 
 ## Requirements
 
@@ -41,7 +40,7 @@ This script is compatible with any application that supports the additional func
 - CAD software like AutoCAD, SolidWorks, etc.
 - Video editors like Adobe Premiere, DaVinci Resolve, etc.
 - Broadcasting software like OBS, Streamlabs, etc.
-- Code editors like Visual Studio Code, Atom, etc.
+- Code editors like Visual Studio Code, Atom, Sublime Text, etc.
 - Other AutoHotkey scripts
 
 ## Installation
@@ -49,22 +48,23 @@ This script is compatible with any application that supports the additional func
 ### Running the Script
 
 1. Download and install [AutoHotkey v2](https://www.autohotkey.com/v2/).
-2. Clone this repository or download the script file.
-3. Place the `F13Icons` folder with `F13-OFF.ico` and `F13-ON.ico` icons in the same directory as the script.
-4. Run the script by double-clicking the `.ahk` file.
+2. Clone this repository
+3. Run the script by double-clicking the `.ahk` file.
 
-### Using the Compiled EXE
+### Using the Compiled EXE / I don't want to install AutoHotkey, I just want to use the `F13`-`F24` keys!
 
 For users who do not want to install AutoHotkey and just need a utility to use the `F13`-`F24` keys, the repository contains a compiled executable:
 
-1. Download the compiled `.exe` file from the repository.
-2. Place the `F13Icons` folder with `F13-OFF.ico` and `F13-ON.ico` icons in the same directory as the executable.
-3. Run the executable by double-clicking the `.exe` file.
+1. Download the compiled `.exe` file from the repository. Both 32-bit and 64-bit versions are available.
+2. Run the executable by double-clicking the `.exe` file.
 
 ## Usage
 
 1. Use the Caps Lock key to switch between `F1`-`F12` and `F13`-`F24` functionalities.
-2. Access the systray menu for Help, About, or to Exit the application.
+2. Right click on the systray icon to open the menu for _Help_, view the _About_, or to _Exit_ the application.
+    - The default action (double click) open a message box with an help message. The help message is available in 5 languages (English, German, Spanish, French, Italian) detected by the os language.
+    - The _about_ action open a message box with some info about the author and the license. 5 languages (English, German, Spanish, French, Italian).
+    - The _Exit_ action closes the application without asking for confirmation.
 
 ## The Basic `F13`-`F24` Key Remapping
 
@@ -101,4 +101,4 @@ If you have any questions or suggestions, feel free to contact me at [centomila.
 
 ---
 
-Made with ❤️ by Centomila. If you found this script useful, consider checking out my music and sharing it with others! You can find my discography at [centomila.com](https://centomila.com).
+Made with ❤️ by Centomila. If you found this application useful or inspiring, consider checking out my music and sharing it with others! You can find my discography at [centomila.com](https://centomila.com).

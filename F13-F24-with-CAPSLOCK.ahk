@@ -1,5 +1,6 @@
 ﻿#Requires AutoHotkey v2.0
 #SingleInstance force
+Persistent
 
 ; This script remap the F1-F12 keys to F13-F24 when the Caps Lock key is pressed.
 ; Pressing the Caps Lock key again disables the remapping and restores the F1-F12 keys.
@@ -14,6 +15,15 @@
 AppName := "F13-F24 with CapsLock by Centomila"
 AppVersion := "2.0.0"
 
+if A_IsCompiled {
+    ; Create the "F13F24" temporary directory if it doesn't exist.
+    if not FileExist(A_Temp . "\F13F24") {
+        DirCreate(A_Temp . "\F13F24")
+    }
+    if not FileExist(A_Temp . "\F13F24\LICENSE") {
+        FileInstall("LICENSE", A_Temp . "\F13F24\LICENSE", 0)
+    }
+}
 
 ; Define the icon file paths.
 IconOff := A_WorkingDir . "\F13-OFF.ico" ; Icon used when Caps Lock is off
@@ -48,6 +58,23 @@ ChangeIcon()
 ; This means that the key will still perform its default action, in addition to executing the script you've defined.
 ~CapsLock:: ChangeIcon
 
+
+; Define the license text files.
+LicenseMIT_En := ""
+LicenseMIT_De := ""
+LicenseMIT_Es := ""
+LicenseMIT_Fr := ""
+LicenseMIT_It := ""
+
+if A_IsCompiled {
+    LicenseMIT_En := FileRead(A_Temp . "\F13F24\LICENSE")   
+} else {
+    LicenseMIT_En := FileRead("LICENSE")
+}
+
+
+
+; Tray Menu -----------------------------------------------------------------------------------------
 ; Create the tray menu.
 Tray := A_TrayMenu
 Tray.Delete()
@@ -58,12 +85,15 @@ Tray.Add(AppName, HelpMsg)
 Tray.Add()
 ; Add the About menu item.
 Tray.Add("About", AboutMsg)
+; Add the MIT License menu item.
+Tray.Add("MIT License", LicenseMsg)
 ; Add the Exit menu item.
-Tray.Add("Exit", ExitApp)
+Tray.Add("Exit", Quit)
 ; Set the default menu item.
 Tray.Default := AppName
 
-; Detect the language of the operating system and convert the language code to an ISO 639-1 code.
+; Functions -----------------------------------------------------------------------------------------
+; Detect the language of the operating system and convert the language code to an ISO 639-1 code (EN, IT, etc.)
 DetectOsLanguage() {
     switch A_Language {
         ; Italian
@@ -84,13 +114,12 @@ DetectOsLanguage() {
     }
 }
 
-
-; Detect current language using A_Language
+; Function to display the Help box. The content of HelpText_ is defined in the Strings.ahk file.
 HelpMsg(A_ThisMenuItem, A_ThisMenuItemPos, Tray) {
     ; Set default language in case A_Language is not set or recognized
     selectedHelpText := HelpText_EN  ; Default to English
 
-    ; Check A_Language to determine which HelpText to display
+    ; Using the returned value of DetectOsLanguage(), determine which HelpText to display
     switch (DetectOsLanguage()) {
         case "IT":  ; Italian
             selectedHelpText := HelpText_IT
@@ -107,12 +136,12 @@ HelpMsg(A_ThisMenuItem, A_ThisMenuItemPos, Tray) {
     MsgBox(selectedHelpText, "Help " . AppName)
 }
 
-; Function to display the About box.
+; Function to display the About box. The content of AboutText_ is defined in the Strings.ahk file.
 AboutMsg(A_ThisMenuItem, A_ThisMenuItemPos, Tray) {
     ; Set default language in case A_Language is not set or recognized
     selectedAboutText := AboutText_EN  ; Default to English
 
-    ; Check A_Language to determine which AboutText to display
+    ; Using the returned value of DetectOsLanguage(), determine which AboutText to display
     switch (DetectOsLanguage()) {
         case "IT":  ; Italian
             selectedAboutText := AboutText_IT
@@ -131,18 +160,26 @@ AboutMsg(A_ThisMenuItem, A_ThisMenuItemPos, Tray) {
     if AboutAnswer = "Yes" {
         Run "https://centomila.com"
     }
+}
 
 
+LicenseMsg(A_ThisMenuItem, A_ThisMenuItemPos, Tray) {
+     MsgBox(LicenseMIT_En, "MIT License " . AppName . " " . AppVersion)
 }
 
 ; Function to exit the application.
-ExitApp(*) {
+
+Quit(*) {
+    if A_IsCompiled {
+        DirDelete(A_Temp . "\F13F24", true) ; Delete the F13F24 temporary directory when the compiled exe is closed. True for recursive.
+    }
     ExitApp()
 }
 
-; Main app
+; The main remap F1-F12 to F13-F24 function. -------------------------------------------------------------------
+; Main remap F1-F12 to F13-F24 when the Caps Lock key is pressed.
 
-#HotIf GetKeyState("CapsLock", "T")
+#HotIf GetKeyState("CapsLock", "T") ; GetKeyState returns 1 if the Caps Lock key is pressed. T: Retrieve the toggle state.
     F1::F13
     F2::F14
     F3::F15
@@ -156,4 +193,3 @@ ExitApp(*) {
     F11::F23
     F12::F24
 #HotIf
-
