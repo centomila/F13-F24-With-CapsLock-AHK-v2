@@ -1,34 +1,34 @@
-﻿; This script enables the Caps Lock key to use F13-F24 keys.
-; Disable the Caps Lock key to use the normal F1-F12 keys.
-
-; Recommended for new scripts due to its superior speed and reliability.
-SendMode("Input")
-
-; Ensures a consistent starting directory.
-SetWorkingDir(A_ScriptDir)
-
-; Keep the script running until the user exits it.
-Persistent
-
+﻿#Requires AutoHotkey v2.0
 #SingleInstance force
 
-; Define the application name and version.
-AppName := "Centomila's F13-F24 with CapsLock"
-AppVersion := "1.0.0"
+; This script remap the F1-F12 keys to F13-F24 when the Caps Lock key is pressed.
+; Pressing the Caps Lock key again disables the remapping and restores the F1-F12 keys.
 
-; Define the help and about texts.
-HelpText := "Enable the Caps Lock key to use F13-F24 keys.`n`nDisable the Caps Lock key to use the normal F1-F12 keys."
-AboutText := "This simple script is made with Love  by Centomila.`n`n" .
-            "If this has been useful to you, consider listening or sharing my music. You can find links to all my discography on `n`n`n" .
-            "https://centomila.com"
+; Includes --------------------------------------------------------------------------
+; Include the file strings.ahk to avoid super long script lines.
+#include Strings.ahk
+; Include the file autoreload-on-save.ahk that autoreload the script when it is saved.
+#Include autoreload-on-save.ahk
+
+; Define the application name and version.
+AppName := "F13-F24 with CapsLock by Centomila"
+AppVersion := "2.0.0"
+
 
 ; Define the icon file paths.
-IconOff := A_ScriptDir . "\F13Icons\F13-OFF.ico"
-IconOn := A_ScriptDir . "\F13Icons\F13-ON.ico"
+IconOff := A_WorkingDir . "\F13-OFF.ico" ; Icon used when Caps Lock is off
+IconOn := A_WorkingDir . "\F13-ON.ico" ; Icon used when Caps Lock is on
 
-; Install the icon files.
-FileInstall IconOff, IconOff, 0
-FileInstall IconOn, IconOn, 0
+; Install the icon files if they don't exist. 0 is to avoid overwriting existing icons.
+; The user can replace the icons without the risk to overwrite them at the next launch.
+; Icon used when Caps Lock is off
+if not FileExist(IconOff) {
+    FileInstall("F13-OFF.ico",A_WorkingDir . "\F13-OFF.ico", 0)
+}
+; Icon used when Caps Lock is on
+if not FileExist(IconOn) {
+    FileInstall("F13-ON.ico",A_WorkingDir . "\F13-ON.ico", 0)
+}
 
 ; Function to change the tray icon based on the Caps Lock state.
 ChangeIcon() {
@@ -39,11 +39,14 @@ ChangeIcon() {
         TraySetIcon(IconOff)
         ToolTip "`nF1 | F12`n ", 9999,9999
     }
-    SetTimer () => ToolTip(), -1500
+    SetTimer () => ToolTip(), -1500 ; Clear the tooltip after 1.5 seconds
 }
-
 ; Execute ChangeIcon on startup.
 ChangeIcon()
+
+; the tilde (~) symbol before a hotkey tells AutoHotkey to allow the original function of the key to pass through.
+; This means that the key will still perform its default action, in addition to executing the script you've defined.
+~CapsLock:: ChangeIcon
 
 ; Create the tray menu.
 Tray := A_TrayMenu
@@ -51,27 +54,85 @@ Tray.Delete()
 
 ; Add the Help menu item.
 Tray.Add(AppName, HelpMsg)
-
 ; Add a separator line.
 Tray.Add()
-
 ; Add the About menu item.
 Tray.Add("About", AboutMsg)
-
 ; Add the Exit menu item.
 Tray.Add("Exit", ExitApp)
-
 ; Set the default menu item.
 Tray.Default := AppName
 
-; Function to display the Help box.
+; Detect the language of the operating system and convert the language code to an ISO 639-1 code.
+DetectOsLanguage() {
+    switch A_Language {
+        ; Italian
+        case "0010", "0410", "0810":
+            return "IT"
+        ; German
+        case "0007", "0C07", "0407", "1407", "1007", "0807":
+            return "DE"
+        ; Spanish
+        case "000A":
+            return "ES"
+        ; French
+        case "000C", "080C", "2C0C", "0C0C", "1C0C", "300C", "040C", "3C0C", "140C", "340C", "180C", "380C", "200C", "280C", "100C", "240C":
+            return "FR"
+        ; English
+        default:
+            return "EN"
+    }
+}
+
+
+; Detect current language using A_Language
 HelpMsg(A_ThisMenuItem, A_ThisMenuItemPos, Tray) {
-    MsgBox(HelpText, "Help " . AppName . " " . AppVersion)
+    ; Set default language in case A_Language is not set or recognized
+    selectedHelpText := HelpText_EN  ; Default to English
+
+    ; Check A_Language to determine which HelpText to display
+    switch (DetectOsLanguage()) {
+        case "IT":  ; Italian
+            selectedHelpText := HelpText_IT
+        case "DE":  ; German
+            selectedHelpText := HelpText_DE
+        case "ES":  ; Spanish
+            selectedHelpText := HelpText_ES
+        case "FR":  ; French
+            selectedHelpText := HelpText_FR
+        ; Add more cases for other languages if needed
+    }
+
+    ; Display MsgBox with selected help text
+    MsgBox(selectedHelpText, "Help " . AppName)
 }
 
 ; Function to display the About box.
 AboutMsg(A_ThisMenuItem, A_ThisMenuItemPos, Tray) {
-    MsgBox(AboutText, "About " . AppName)
+    ; Set default language in case A_Language is not set or recognized
+    selectedAboutText := AboutText_EN  ; Default to English
+
+    ; Check A_Language to determine which AboutText to display
+    switch (DetectOsLanguage()) {
+        case "IT":  ; Italian
+            selectedAboutText := AboutText_IT
+        case "DE":  ; German
+            selectedAboutText := AboutText_DE
+        case "ES":  ; Spanish
+            selectedAboutText := AboutText_ES
+        case "FR":  ; French
+            selectedAboutText := AboutText_FR
+        ; Add more cases for other languages if needed
+    }
+
+    ; Display MsgBox with selected About text. Add a YES-NO button. Yes open the website, no close the msgbox.
+    AboutAnswer := MsgBox(selectedAboutText, "About " . AppName, "YesNo")
+
+    if AboutAnswer = "Yes" {
+        Run "https://centomila.com"
+    }
+
+
 }
 
 ; Function to exit the application.
@@ -80,8 +141,6 @@ ExitApp(*) {
 }
 
 ; Main app
-
-~CapsLock:: ChangeIcon
 
 #HotIf GetKeyState("CapsLock", "T")
     F1::F13
@@ -98,7 +157,3 @@ ExitApp(*) {
     F12::F24
 #HotIf
 
-; Autoreload on saving when using VSCode
-#HotIf WinActive("Visual Studio Code")
-~^s:: Reload
-#HotIf

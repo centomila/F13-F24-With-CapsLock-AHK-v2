@@ -1,6 +1,21 @@
 # Centomila's F13-F24 with CapsLock
 
-Centomila's F13-F24 with CapsLock is a simple but useful AutoHotkey v2 (AHK2) script that enhances the functionality of the Caps Lock key. When Caps Lock is enabled, the `F1`-`F12` keys are remapped to `F13`-`F24`. This script also demonstrates examples of hotkeys, Caps Lock usage, systray menu, message box, and dynamic systray icon changes.
+Centomila's F13-F24 with CapsLock is a simple but useful AutoHotkey v2 (AHK2) script that enhances the functionality of the Caps Lock key. When Caps Lock is enabled, the `F1`-`F12` keys are remapped to `F13`-`F24`.
+
+While this can be done in less of 20 lines of code, I wanted to created a script that cover many Autohotkey functionality that often are asked on the official Autohotkey Forum, Reddit and Stackoverflow communities. I tried to comment the script as much as possible without being too verbose.
+
+This script demonstrates examples of
+- Hotkeys with HotIf
+- String concatenation
+- Switch cases
+- Caps Lock usage
+- Customized systray menu
+- Use of message boxes (_MsgBox_)
+- Dynamic systray icon changes
+- ToolTip text with absolute positioning in the right bottom corner
+- Separate AHK files (_#include_)
+- Installation of file from the compiled EXE (_FileInstall_)
+- OS Language detection
 
 ## Description
 
@@ -53,7 +68,7 @@ For users who do not want to install AutoHotkey and just need a utility to use t
 
 ## The Basic `F13`-`F24` Key Remapping
 
-If you only want a simple remapping of the `F1`-`F12` keys to implement in your script, you can use the following code:
+If you juste need a simple remapping of the `F1`-`F12` keys to implement in your script, this is all you need:
 
 ```ahk
 #HotIf GetKeyState("CapsLock", "T")
