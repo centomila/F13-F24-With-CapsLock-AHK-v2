@@ -1,6 +1,6 @@
 # F13-F24 with CapsLock
 <!-- TOC -->
-- [Centomila's F13-F24 with CapsLock](#centomilas-f13-f24-with-capslock)
+- [F13-F24 with CapsLock](#f13-f24-with-capslock)
     - [Description](#description)
     - [Requirements](#requirements)
     - [How It Works](#how-it-works)
