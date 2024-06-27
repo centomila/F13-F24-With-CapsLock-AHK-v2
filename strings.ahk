@@ -2,11 +2,11 @@
 
 
 ; Define the help texts.
-HelpText_EN := "To use the F13-F24 keys, enable the Caps Lock key. When Caps Lock is on, the F1-F12 keys will function as F13-F24.`n`nTo use the standard F1-F12 keys, simply disable the Caps Lock key.`n`nYou can customize the icons by replacing the F13-OFF.ico and F13-ON.ico files in the application's directory."
-HelpText_IT := "Per utilizzare i tasti F13-F24, abilita il tasto Bloc Maiusc. Quando Bloc Maiusc è attivato, i tasti F1-F12 funzioneranno come F13-F24.`n`nPer utilizzare i tasti standard F1-F12, disabilita semplicemente il tasto Bloc Maiusc.`n`nPuoi personalizzare le icone sostituendo i file F13-OFF.ico e F13-ON.ico nella directory dell'applicazione."
-HelpText_DE := "Um die Tasten F13-F24 zu verwenden, aktivieren Sie die Feststelltaste. Wenn die Feststelltaste aktiviert ist, fungieren die Tasten F1-F12 als F13-F24.`n`nUm die Standardtasten F1-F12 zu verwenden, deaktivieren Sie einfach die Feststelltaste.`n`nSie können die Symbole anpassen, indem Sie die Dateien F13-OFF.ico und F13-ON.ico im Verzeichnis der Anwendung ersetzen."
-HelpText_ES := "Para usar las teclas F13-F24, habilita la tecla Bloq Mayús. Cuando Bloq Mayús está activado, las teclas F1-F12 funcionarán como F13-F24.`n`nPara usar las teclas estándar F1-F12, simplemente desactiva la tecla Bloq Mayús.`n`nPuedes personalizar los iconos reemplazando los archivos F13-OFF.ico y F13-ON.ico en el directorio de la aplicación."
-HelpText_FR := "Pour utiliser les touches F13-F24, activez la touche Verr Maj. Lorsque Verr Maj est activé, les touches F1-F12 fonctionnent comme F13-F24.`n`nPour utiliser les touches standard F1-F12, désactivez simplement la touche Verr Maj.`n`nVous pouvez personnaliser les icônes en remplaçant les fichiers F13-OFF.ico et F13-ON.ico dans le répertoire de l'application."
+HelpText_EN := "To use the F13-F24 keys, enable the Caps Lock key. When Caps Lock is on, the F1-F12 keys will function as F13-F24.`n`nTo use the standard F1-F12 keys, simply disable the Caps Lock key."
+HelpText_IT := "Per utilizzare i tasti F13-F24, abilita il tasto Bloc Maiusc. Quando Bloc Maiusc è attivato, i tasti F1-F12 funzioneranno come F13-F24.`n`nPer utilizzare i tasti standard F1-F12, disabilita semplicemente il tasto Bloc Maiusc."
+HelpText_DE := "Um die Tasten F13-F24 zu verwenden, aktivieren Sie die Feststelltaste. Wenn die Feststelltaste aktiviert ist, fungieren die Tasten F1-F12 als F13-F24.`n`nUm die Standardtasten F1-F12 zu verwenden, deaktivieren Sie einfach die Feststelltaste."
+HelpText_ES := "Para usar las teclas F13-F24, habilita la tecla Bloq Mayús. Cuando Bloq Mayús está activado, las teclas F1-F12 funcionarán como F13-F24.`n`nPara usar las teclas estándar F1-F12, simplemente desactiva la tecla Bloq Mayús."
+HelpText_FR := "Pour utiliser les touches F13-F24, activez la touche Verr Maj. Lorsque Verr Maj est activé, les touches F1-F12 fonctionnent comme F13-F24.`n`nPour utiliser les touches standard F1-F12, désactivez simplement la touche Verr Maj."
 
 AboutText_EN := "Hey there! I'm Centomila, the creator of this little application.`n`n" . 
                 "I hope you found it useful. Remember, it's free and doesn't collect any data.`n`n" . 

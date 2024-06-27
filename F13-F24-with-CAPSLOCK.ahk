@@ -14,30 +14,31 @@ Persistent
 ; Define the application name and version.
 AppName := "F13-F24 with CapsLock by Centomila"
 AppVersion := "2.0.0"
+TempFolder := A_Temp . "\F13F24"
 
 if A_IsCompiled {
     ; Create the "F13F24" temporary directory if it doesn't exist.
-    if not FileExist(A_Temp . "\F13F24") {
-        DirCreate(A_Temp . "\F13F24")
+    if not FileExist(TempFolder) {
+        DirCreate(TempFolder)
     }
-    if not FileExist(A_Temp . "\F13F24\LICENSE") {
-        FileInstall("LICENSE", A_Temp . "\F13F24\LICENSE", 0)
-    }
+    FileInstall("LICENSE", TempFolder . "\LICENSE", 1)
+    FileInstall("F13-OFF.ico",TempFolder . "\F13-OFF.ico", 1)
+    FileInstall("F13-ON.ico",TempFolder . "\F13-ON.ico", 1)
 }
 
 ; Define the icon file paths.
-IconOff := A_WorkingDir . "\F13-OFF.ico" ; Icon used when Caps Lock is off
-IconOn := A_WorkingDir . "\F13-ON.ico" ; Icon used when Caps Lock is on
-
-; Install the icon files if they don't exist. 0 is to avoid overwriting existing icons.
-; The user can replace the icons without the risk to overwrite them at the next launch.
-; Icon used when Caps Lock is off
-if not FileExist(IconOff) {
-    FileInstall("F13-OFF.ico",A_WorkingDir . "\F13-OFF.ico", 0)
+IconOff := ""
+if A_IsCompiled {
+    IconOff := TempFolder . "\F13-OFF.ico"
+} else {
+    IconOff := A_WorkingDir . "\F13-OFF.ico"        
 }
-; Icon used when Caps Lock is on
-if not FileExist(IconOn) {
-    FileInstall("F13-ON.ico",A_WorkingDir . "\F13-ON.ico", 0)
+
+IconOn := ""
+if A_IsCompiled {
+    IconOn := TempFolder . "\F13-ON.ico"
+} else {
+    IconOn := A_WorkingDir . "\F13-ON.ico"
 }
 
 ; Function to change the tray icon based on the Caps Lock state.
