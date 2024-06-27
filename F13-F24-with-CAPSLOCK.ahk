@@ -61,13 +61,8 @@ ChangeIcon()
 ; This means that the key will still perform its default action, in addition to executing the script you've defined.
 ~CapsLock:: ChangeIcon ; Execute the ChangeIcon function when the Caps Lock key is pressed.
 
-
-; Define the license text files.
+; Define the license text files. --------------------------------------------------------------------
 LicenseMIT_En := ""
-LicenseMIT_De := ""
-LicenseMIT_Es := ""
-LicenseMIT_Fr := ""
-LicenseMIT_It := ""
 
 if A_IsCompiled {
     LicenseMIT_En := FileRead(A_Temp . "\F13F24\LICENSE")
@@ -116,7 +111,7 @@ DetectOsLanguage() {
     }
 }
 
-; Function to display the Help box. The content of HelpText_ is defined in the Strings.ahk file.
+; Function to display the Help box. The content of HelpText_ is defined in the strings.ahk file imported via Include at the top of the script.
 HelpMsg(A_ThisMenuItem, A_ThisMenuItemPos, Tray) {
     ; Set default language in case A_Language is not set or recognized
     selectedHelpText := HelpText_EN  ; Default to English
