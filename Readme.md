@@ -21,11 +21,11 @@
 # Centomila's F13-F24 with CapsLock
 
 ##  1. <a name='Description'></a>Description
-Centomila's F13-F24 with CapsLock is a simple but useful AutoHotkey v2 (AHK2) script that enhances the functionality of the `Caps Lock` key. When `Caps Lock` is **enabled**, the `F1`-`F12` keys are remapped to `F13`-`F24`. The status are displayed in the systray icon and for a short time on a tooltip in the right bottom corner.
+Centomila's F13-F24 with CapsLock is a simple but useful AutoHotkey v2 (AHK2) script that enhances the functionality of the `Caps Lock` key. When `Caps Lock` is **enabled**, the `F1`-`F12` keys are remapped to `F13`-`F24`. The status is displayed in the systray icon and for a short time on a tooltip in the bottom right corner.
 
-While the remapping is really simple and can be done in less of 20 lines of code (see below), I wanted to created a script that covers many Autohotkey functionality that often are asked on the official Autohotkey Forum, Reddit and Stackoverflow communities. I tried to comment the script as much as possible without being too verbose.
+While the remapping is really simple and can be done in less than 20 lines of code (see below), I wanted to create a script that covers many AutoHotkey functionalities that are often asked about on the official AutoHotkey Forum, Reddit, and Stackoverflow communities. I tried to comment the script as much as possible without being too verbose.
 
-This script demonstrates examples of
+This script demonstrates examples of:
 - Hotkeys with HotIf
 - String concatenation
 - Switch cases
@@ -33,16 +33,16 @@ This script demonstrates examples of
 - Customized systray menu
 - Use of message boxes (_MsgBox_)
 - Dynamic systray icon changes
-- ToolTip text with absolute positioning in the right bottom corner
+- ToolTip text with absolute positioning in the bottom right corner
 - Separate AHK files (_#include_)
-- Installation of file from the compiled EXE (_FileInstall_)
-- OS Language detection
+- Installation of files from the compiled EXE (_FileInstall_)
 - Use of AutoHotkey's _A_Temp_ variable to store icons and license files away from the user's eyes
 - Use of AutoHotkey's _IsCompiled_ variable for compiling with AHK2EXE
+- OS Language detection with the _A_Language_ variable
 
 ##  2. <a name='Requirements'></a>Requirements
 
-- A Windows PC 32bit or 64bit
+- A Windows PC, 32-bit or 64-bit
 - [AutoHotkey v2](https://www.autohotkey.com/v2/) (for running the script version)
 
 ##  3. <a name='HowItWorks'></a>How It Works
@@ -68,7 +68,7 @@ This script is compatible with any application that supports the additional func
 ###  5.1. <a name='RunningtheScript'></a>Running the Script
 
 1. Download and install [AutoHotkey v2](https://www.autohotkey.com/v2/).
-2. Clone this repository
+2. Clone this repository.
 3. Run the script by double-clicking the `.ahk` file.
 
 ###  5.2. <a name='UsingtheCompiledEXEIdontwanttoinstallAutoHotkeyIjustwanttousetheF13-F24keys'></a>Using the Compiled EXE / I don't want to install AutoHotkey, I just want to use the `F13`-`F24` keys!
@@ -81,17 +81,17 @@ For users who do not want to install AutoHotkey and just need a utility to use t
 ##  6. <a name='Usage'></a>Usage
 
 1. Use the Caps Lock key to switch between `F1`-`F12` and `F13`-`F24` functionalities.
-2. Right click on the systray icon to open the menu for _Help_, view the _About_, or to _Exit_ the application.
-    - The default action (double click) open a message box with an help message. The help message is available in 5 languages (English, German, Spanish, French, Italian) detected by the os language.
-    - The _about_ action open a message box with some info about the author and the license. 5 languages (English, German, Spanish, French, Italian).
+2. Right-click on the systray icon to open the menu for _Help_, view the _About_, or to _Exit_ the application.
+    - The default action (double-click) opens a message box with a help message. The help message is available in 5 languages (English, German, Spanish, French, Italian) detected by the OS language.
+    - The _About_ action opens a message box with some info about the author and the license in 5 languages (English, German, Spanish, French, Italian).
     - The _Exit_ action closes the application without asking for confirmation.
-        - The compiled version also remove the content created in the user temp folder (`C:\Users\%USERNAME%\AppData\Local\Temp\F13F24` by default) during the script execution.
+        - The compiled version also removes the content created in the user temp folder (`C:\Users\%USERNAME%\AppData\Local\Temp\F13F24` by default) during the script execution.
 
 ##  7. <a name='TheBasicF13-F24KeyRemappingIdontwantallthisstuffIjustwanttousetheF13-F24keysinmyscript'></a>The Basic `F13`-`F24` Key Remapping / I don't want all this stuff! I just want to use the `F13`-`F24` keys in my script!
 
-If you juste need a simple remapping of the `F1`-`F12` keys to implement in your script, this is all you need:
+If you just need a simple remapping of the `F1`-`F12` keys to implement in your script, this is all you need:
 
-```ahk
+```AutoHotkey
 #HotIf GetKeyState("CapsLock", "T")
     F1::F13
     F2::F14
