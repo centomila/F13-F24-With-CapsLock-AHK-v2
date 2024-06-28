@@ -16,14 +16,16 @@ AppName := "F13-F24 with CapsLock by Centomila"
 AppVersion := "2.0.0"
 
 ; Settings for the compiled version (executable) only. -------------------------------------
-TempFolder := A_Temp . "\F13F24"
+TempFolder := A_Temp . "\F13F24" ; Set the "TempFolder" variable to the "C:\Users\USERNAME\AppData\Local\Temp\F13F24" temporary directory.
 
-if A_IsCompiled {
+if A_IsCompiled { ; This actions are only executed when the script is compiled (executable).
     ; Create the "F13F24" temporary directory if it doesn't exist.
     if not FileExist(TempFolder) {
         DirCreate(TempFolder)
     }
+    ; Copy the "LICENSE" file to the "F13F24" temporary directory.
     FileInstall("LICENSE", TempFolder . "\LICENSE", 1)
+    ; Copy the "F13-OFF.ico" and "F13-ON.ico" files to the "F13F24" temporary directory.
     FileInstall("F13-OFF.ico", TempFolder . "\F13-OFF.ico", 1)
     FileInstall("F13-ON.ico", TempFolder . "\F13-ON.ico", 1)
 }
@@ -113,9 +115,6 @@ DetectOsLanguage() {
 
 ; Function to display the Help box. The content of HelpText_ is defined in the strings.ahk file imported via Include at the top of the script.
 HelpMsg(A_ThisMenuItem, A_ThisMenuItemPos, Tray) {
-    ; Set default language in case A_Language is not set or recognized
-    selectedHelpText := HelpText_EN  ; Default to English
-
     ; Using the returned value of DetectOsLanguage(), determine which HelpText to display
     switch (DetectOsLanguage()) {
         case "IT":  ; Italian
@@ -126,7 +125,9 @@ HelpMsg(A_ThisMenuItem, A_ThisMenuItemPos, Tray) {
             selectedHelpText := HelpText_ES
         case "FR":  ; French
             selectedHelpText := HelpText_FR
-            ; Add more cases for other languages if needed
+        default: ; English
+            selectedHelpText := HelpText_EN
+        ; Add more cases for other languages if needed
     }
 
     ; Display MsgBox with selected help text
@@ -135,9 +136,6 @@ HelpMsg(A_ThisMenuItem, A_ThisMenuItemPos, Tray) {
 
 ; Function to display the About box. The content of AboutText_ is defined in the Strings.ahk file.
 AboutMsg(A_ThisMenuItem, A_ThisMenuItemPos, Tray) {
-    ; Set default language in case A_Language is not set or recognized
-    selectedAboutText := AboutText_EN  ; Default to English
-
     ; Using the returned value of DetectOsLanguage(), determine which AboutText to display
     switch (DetectOsLanguage()) {
         case "IT":  ; Italian
@@ -149,6 +147,8 @@ AboutMsg(A_ThisMenuItem, A_ThisMenuItemPos, Tray) {
         case "FR":  ; French
             selectedAboutText := AboutText_FR
             ; Add more cases for other languages if needed
+        default: ; English
+            selectedAboutText := AboutText_EN
     }
 
     ; Display MsgBox with selected About text. Add a YES-NO button. Yes open the website, no close the msgbox.
@@ -161,13 +161,12 @@ AboutMsg(A_ThisMenuItem, A_ThisMenuItemPos, Tray) {
 
 
 LicenseMsg(A_ThisMenuItem, A_ThisMenuItemPos, Tray) {
-    MsgBox(LicenseMIT_En, "MIT License " . AppName . " " . AppVersion)
+    MsgBox(LicenseMIT_En, "MIT License " . AppName . " " . AppVersion) ; Display MsgBox with selected License text.
 }
 
 ; Function to exit the application.
-
 Quit(*) {
-    if A_IsCompiled {
+    if A_IsCompiled { ; Delete the F13F24 temporary directory when the compiled exe is closed.
         DirDelete(A_Temp . "\F13F24", true) ; Delete the F13F24 temporary directory when the compiled exe is closed. True for recursive.
     }
     ExitApp()
@@ -177,16 +176,16 @@ Quit(*) {
 ; Main remap F1-F12 to F13-F24 when the Caps Lock key is pressed.
 
 #HotIf GetKeyState("CapsLock", "T") ; GetKeyState returns 1 if the Caps Lock key is pressed. T: Retrieve the toggle state.
-F1::F13
-F2::F14
-F3::F15
-F4::F16
-F5::F17
-F6::F18
-F7::F19
-F8::F20
-F9::F21
-F10::F22
-F11::F23
-F12::F24
-#HotIf
+F1::F13 ; F1 is remapped to F13
+F2::F14 ; F2 is remapped to F14
+F3::F15 ; F3 is remapped to F15
+F4::F16 ; F4 is remapped to F16
+F5::F17  ; F5 is remapped to F17
+F6::F18 ; F6 is remapped to F18
+F7::F19 ; F7 is remapped to F19
+F8::F20 ; F8 is remapped to F20
+F9::F21 ; F9 is remapped to F21
+F10::F22 ; F10 is remapped to F22
+F11::F23 ; F11 is remapped to F23
+F12::F24 ; F12 is remapped to F24
+#HotIf ; End of main remap F1-F12 to F13-F24 when the Caps Lock key is pressed.
