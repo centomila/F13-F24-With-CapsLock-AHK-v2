@@ -23,41 +23,43 @@ if A_IsCompiled { ; This actions are only executed when the script is compiled (
     if not FileExist(TempFolder) {
         DirCreate(TempFolder)
     }
+    
     ; Copy the "LICENSE" file to the "F13F24" temporary directory.
     FileInstall("LICENSE", TempFolder . "\LICENSE", 1)
+    
     ; Copy the "F13-OFF.ico" and "F13-ON.ico" files to the "F13F24" temporary directory.
     FileInstall("F13-OFF.ico", TempFolder . "\F13-OFF.ico", 1)
     FileInstall("F13-ON.ico", TempFolder . "\F13-ON.ico", 1)
 }
 
-; Systray Icons. ---------------------------------------------------------------------------
-IconOff := ""
-if A_IsCompiled {
-    IconOff := TempFolder . "\F13-OFF.ico"
-} else {
-    IconOff := A_WorkingDir . "\F13-OFF.ico"
+; System tray Icons. ---------------------------------------------------------------------------
+IconOff := "" ; Create the "IconOff" variable.
+if A_IsCompiled { ; This actions are only executed when the script is compiled (executable).
+    IconOff := TempFolder . "\F13-OFF.ico" ; Set the "IconOff" variable to the "C:\Users\USERNAME\AppData\Local\Temp\F13F24\F13-OFF.ico" path.
+} else { ; This actions are only executed when the script is not compiled (executable).
+    IconOff := A_WorkingDir . "\F13-OFF.ico" ; Set the "IconOff" variable to the "current AHK directory\F13-OFF.ico" 
 }
 
-IconOn := ""
-if A_IsCompiled {
-    IconOn := TempFolder . "\F13-ON.ico"
-} else {
-    IconOn := A_WorkingDir . "\F13-ON.ico"
+IconOn := "" ; Create the "IconOn" variable.
+if A_IsCompiled { ; This actions are only executed when the script is compiled (executable).
+    IconOn := TempFolder . "\F13-ON.ico" ; Set the "IconOn" variable to the "C:\Users\USERNAME\AppData\Local\Temp\F13F24\F13-ON.ico" path.
+} else { ; This actions are only executed when the script is not compiled (executable).
+    IconOn := A_WorkingDir . "\F13-ON.ico" ; Set the "IconOn" variable to the "current AHK directory\F13-ON.ico"
 }
 
-; Function to change the tray icon based on the Caps Lock state.
+; Function to change the system tray icon based on the Caps Lock state.
 ChangeIcon() {
-    if GetKeyState("CapsLock", "T") {
-        TraySetIcon(IconOn)
+    if GetKeyState("CapsLock", "T") { ; GetKeyState returns 1 if the Caps Lock key is pressed. T: Retrieve the toggle state.
+        TraySetIcon(IconOn) ; Set the system tray icon to the "F13-ON.ico" icon.
         ToolTip "`nF13 | F24`n ", 9999, 9999 ; Positioned at 9999,9999 so it is always on the lower right corner
     } else {
-        TraySetIcon(IconOff)
-        ToolTip "`nF1 | F12`n ", 9999, 9999
+        TraySetIcon(IconOff) ; Set the system tray icon to the "F13-OFF.ico" icon.
+        ToolTip "`nF1 | F12`n ", 9999, 9999 ; Positioned at 9999,9999 so it is always on the lower right corner
     }
     SetTimer () => ToolTip(), -1500 ; Clear the tooltip after 1.5 seconds
 }
-; Execute ChangeIcon on startup.
-ChangeIcon()
+
+ChangeIcon() ; Execute ChangeIcon on startup.
 
 ; the tilde (~) symbol before a hotkey tells AutoHotkey to allow the original function of the key to pass through.
 ; This means that the key will still perform its default action, in addition to executing the script you've defined.
