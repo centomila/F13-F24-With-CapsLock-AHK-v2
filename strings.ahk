@@ -2,13 +2,13 @@
 
 
 ; Define the help texts.
-HelpText_EN := "To use the F13-F24 keys, enable the Caps Lock key. When Caps Lock is on, the F1-F12 keys will function as F13-F24.`n`nTo use the standard F1-F12 keys, simply disable the Caps Lock key."
-HelpText_IT := "Per utilizzare i tasti F13-F24, abilita il tasto Bloc Maiusc. Quando Bloc Maiusc è attivato, i tasti F1-F12 funzioneranno come F13-F24.`n`nPer utilizzare i tasti standard F1-F12, disabilita semplicemente il tasto Bloc Maiusc."
-HelpText_DE := "Um die Tasten F13-F24 zu verwenden, aktivieren Sie die Feststelltaste. Wenn die Feststelltaste aktiviert ist, fungieren die Tasten F1-F12 als F13-F24.`n`nUm die Standardtasten F1-F12 zu verwenden, deaktivieren Sie einfach die Feststelltaste."
-HelpText_ES := "Para usar las teclas F13-F24, habilita la tecla Bloq Mayús. Cuando Bloq Mayús está activado, las teclas F1-F12 funcionarán como F13-F24.`n`nPara usar las teclas estándar F1-F12, simplemente desactiva la tecla Bloq Mayús."
-HelpText_FR := "Pour utiliser les touches F13-F24, activez la touche Verr Maj. Lorsque Verr Maj est activé, les touches F1-F12 fonctionnent comme F13-F24.`n`nPour utiliser les touches standard F1-F12, désactivez simplement la touche Verr Maj."
+helpText_EN := "To use the F13-F24 keys, enable the Caps Lock key. When Caps Lock is on, the F1-F12 keys will function as F13-F24.`n`nTo use the standard F1-F12 keys, simply disable the Caps Lock key."
+helpText_IT := "Per utilizzare i tasti F13-F24, abilita il tasto Bloc Maiusc. Quando Bloc Maiusc è attivato, i tasti F1-F12 funzioneranno come F13-F24.`n`nPer utilizzare i tasti standard F1-F12, disabilita semplicemente il tasto Bloc Maiusc."
+helpText_DE := "Um die Tasten F13-F24 zu verwenden, aktivieren Sie die Feststelltaste. Wenn die Feststelltaste aktiviert ist, fungieren die Tasten F1-F12 als F13-F24.`n`nUm die Standardtasten F1-F12 zu verwenden, deaktivieren Sie einfach die Feststelltaste."
+helpText_ES := "Para usar las teclas F13-F24, habilita la tecla Bloq Mayús. Cuando Bloq Mayús está activado, las teclas F1-F12 funcionarán como F13-F24.`n`nPara usar las teclas estándar F1-F12, simplemente desactiva la tecla Bloq Mayús."
+helpText_FR := "Pour utiliser les touches F13-F24, activez la touche Verr Maj. Lorsque Verr Maj est activé, les touches F1-F12 fonctionnent comme F13-F24.`n`nPour utiliser les touches standard F1-F12, désactivez simplement la touche Verr Maj."
 
-AboutText_EN := "Hey there! I'm Centomila, the creator of this little application.`n`n" . 
+aboutText_EN := "Hey there! I'm Centomila, the creator of this little application.`n`n" . 
                 "I hope you found it useful. Remember, it's free and doesn't collect any data.`n`n" . 
                 "If you feel grateful or if it solved a problem for you, why not give my music a listen and/or share it?`n`n" . 
                 "You can find links to all the streaming platforms (even the free ones) on my website:`n`n" . 
@@ -19,7 +19,7 @@ AboutText_EN := "Hey there! I'm Centomila, the creator of this little applicatio
                 "---`n`n" . 
                 "Press YES to open centomila.com / Press NO to close this window"
 
-AboutText_IT := "Ciao! Sono Centomila, l'autore di questa piccola applicazione.`n`n" . 
+aboutText_IT := "Ciao! Sono Centomila, l'autore di questa piccola applicazione.`n`n" . 
                 "Spero che ti sia stata utile. Ricorda che è gratuita e non raccoglie dati di alcun tipo.`n`n" . 
                 "Se ti senti grato o se ti ha risolto un problema, che ne dici di ascoltare e/o condividere la mia musica?`n`n" . 
                 "Puoi trovare i link a tutte le piattaforme di streaming (anche quelle gratuite) sul mio sito web:`n`n" . 
@@ -30,7 +30,7 @@ AboutText_IT := "Ciao! Sono Centomila, l'autore di questa piccola applicazione.`
                 "---`n`n" . 
                 "Premi SÌ per aprire centomila.com / Premi NO per chiudere questa finestra"
 
-AboutText_DE := "Hallo! Ich bin Centomila, der Schöpfer dieser kleinen Anwendung.`n`n" . 
+aboutText_DE := "Hallo! Ich bin Centomila, der Schöpfer dieser kleinen Anwendung.`n`n" . 
                 "Ich hoffe, du fandest sie nützlich. Denk daran, sie ist kostenlos und sammelt keine Daten.`n`n" . 
                 "Wenn du dankbar bist oder wenn sie ein Problem für dich gelöst hat, warum hörst du nicht mal in meine Musik rein und/oder teilst sie?`n`n" . 
                 "Auf meiner Website findest du Links zu allen Streaming-Plattformen (auch den kostenlosen):`n`n" . 
@@ -41,7 +41,7 @@ AboutText_DE := "Hallo! Ich bin Centomila, der Schöpfer dieser kleinen Anwendun
                 "---`n`n" . 
                 "Drücke JA, um centomila.com zu öffnen / Drücke NEIN, um dieses Fenster zu schließen"
 
-AboutText_ES := "¡Hola! Soy Centomila, el creador de esta pequeña aplicación.`n`n" . 
+aboutText_ES := "¡Hola! Soy Centomila, el creador de esta pequeña aplicación.`n`n" . 
                 "Espero que te haya sido útil. Recuerda que es gratuita y no recopila datos.`n`n" . 
                 "Si te sientes agradecido o si te ha resuelto un problema, ¿por qué no escuchas mi música y/o la compartes?`n`n" . 
                 "Puedes encontrar enlaces a todas las plataformas de streaming (incluso las gratuitas) en mi sitio web:`n`n" . 
@@ -52,7 +52,7 @@ AboutText_ES := "¡Hola! Soy Centomila, el creador de esta pequeña aplicación.
                 "---`n`n" . 
                 "Presiona SÍ para abrir centomila.com / Presiona NO para cerrar esta ventana"
 
-AboutText_FR := "Salut! Je suis Centomila, le créateur de cette petite application.`n`n" . 
+aboutText_FR := "Salut! Je suis Centomila, le créateur de cette petite application.`n`n" . 
                 "J'espère que vous l'avez trouvée utile. Rappelez-vous, elle est gratuite et ne collecte aucune donnée.`n`n" . 
                 "Si vous êtes reconnaissant ou si elle a résolu un problème pour vous, pourquoi ne pas écouter ma musique et/ou la partager?`n`n" . 
                 "Vous pouvez trouver des liens vers toutes les plateformes de streaming (même les gratuites) sur mon site web:`n`n" . 

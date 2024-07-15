@@ -1,20 +1,4 @@
 # F13-F24 with CapsLock
-<!-- TOC -->
-- [F13-F24 with CapsLock](#f13-f24-with-capslock)
-    - [Description](#description)
-    - [Requirements](#requirements)
-    - [How It Works](#how-it-works)
-    - [Potential Uses](#potential-uses)
-    - [Installation](#installation)
-        - [Running the Script](#running-the-script)
-        - [I don't want to install AutoHotkey, I just want to use the F13-F24 keys](#i-dont-want-to-install-autohotkey-i-just-want-to-use-the-f13-f24-keys)
-    - [Usage](#usage)
-    - [I don't want all this stuff! I just want to use the F13-F24 keys in my script](#i-dont-want-all-this-stuff-i-just-want-to-use-the-f13-f24-keys-in-my-script)
-    - [License](#license)
-    - [Contributing](#contributing)
-    - [Contact](#contact)
-
-<!-- /TOC -->
 
 ## Description
 
@@ -114,7 +98,11 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 Contributions are welcome! Please fork the repository and create a pull request with your changes.
 
-## 10. Contact
+## 10. Changelog
+
+See the [CHANGELOG.md](CHANGELOG.md) file for details.
+
+## 11. Contact
 
 If you have any questions or suggestions, feel free to open an issue on GitHub or contact me at [centomila.com](https://centomila.com/contact/).
 
