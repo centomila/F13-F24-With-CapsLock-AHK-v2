@@ -14,6 +14,7 @@ This script demonstrates examples of:
 - Caps Lock usage
 - Customized systray menu
 - Use of message boxes (_MsgBox_)
+- GUI Window with buttons
 - Dynamic systray icon changes
 - ToolTip text with absolute positioning in the bottom right corner
 - Separate AHK files (_#include_)
@@ -25,7 +26,7 @@ This script demonstrates examples of:
 ## 2. Requirements
 
 - A Windows PC, 32-bit or 64-bit
-- [AutoHotkey v2](https://www.autohotkey.com/v2/) (for running the script version)
+- [AutoHotkey v2](https://www.autohotkey.com/v2/) (for the source code version)
 
 ## 3. How It Works
 
@@ -55,18 +56,20 @@ This script is compatible with any application that supports the additional func
 
 ### 5.2. I don't want to install AutoHotkey, I just want to use the `F13`-`F24` keys
 
-For users who do not want to install AutoHotkey and just need a utility to use the `F13`-`F24` keys, the repository contains a compiled executable:
+To download the latest compiled executable without needing to install AutoHotkey, follow these steps:
 
-1. Download the compiled `.exe` file from the repository. Both 32-bit and 64-bit versions are available.
-2. Run the executable by double-clicking the `.exe` file.
+1. Visit the [releases page](https://github.com/centomila/F13-F24-With-CapsLock-AHK-v2/releases) on GitHub.
+2. Download the compiled `.exe` file from the repository. Choose between the 32-bit and 64-bit versions.
+3. Run the downloaded executable by double-clicking the `.exe` file.
 
 ## 6. Usage
 
 1. Use the Caps Lock key to switch between `F1`-`F12` and `F13`-`F24` functionalities.
-2. Right-click on the systray icon to open the menu for _Help_, view the _About_, or to _Exit_ the application.
-   - The default action (double-click) opens a message box with a help message. The help message is available in 5 languages (English, German, Spanish, French, Italian) detected by the OS language.
-   - The _About_ action opens a message box with some info about the author and the license in 5 languages (English, German, Spanish, French, Italian).
-   - The _Exit_ action closes the application without asking for confirmation.
+2. Right-click on the systray icon to open the menu for _Help_, view the _About_, _License_ or to _Exit_ the application.
+   - _Help_ open a simple message box with a help message in 5 languages (English, German, Spanish, French, Italian) detected by the OS language.
+   - _About_ opens a message box with some info about the author in 5 languages (English, German, Spanish, French, Italian) detected by the OS language.
+   - _License_ opens a message box with the MIT License (English only)
+   - _Exit_ closes the application without asking for confirmation.
      - The compiled version also removes the content created in the user temp folder (`C:\Users\%USERNAME%\AppData\Local\Temp\F13F24` by default) during the script execution.
 
 ## 7. I don't want all this stuff! I just want to use the `F13`-`F24` keys in my script
